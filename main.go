@@ -9,7 +9,7 @@ import (
 
 func main() {
 
-	os.Setenv("PORT", ":4000")
+	os.Setenv("PORT", "4000")
 
 	route := gin.Default()
 
@@ -24,6 +24,6 @@ func main() {
 	route.PUT("/user/:id", controller.PutUserByID)
 
 	route.Use(controller.CORSMiddleware())
-	route.Run(os.Getenv("PORT"))
+	route.Run(":" + os.Getenv("PORT"))
 
 }
