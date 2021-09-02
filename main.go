@@ -1,12 +1,15 @@
 package main
 
 import (
+	"os"
 	"testmongo/controller"
 
 	"github.com/gin-gonic/gin"
 )
 
 func main() {
+
+	os.Setenv("PORT", ":4000")
 
 	route := gin.Default()
 
@@ -21,6 +24,6 @@ func main() {
 	route.PUT("/user/:id", controller.PutUserByID)
 
 	route.Use(controller.CORSMiddleware())
-	route.Run(":4000")
+	route.Run(os.Getenv("PORT"))
 
 }
