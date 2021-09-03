@@ -16,6 +16,7 @@ func main() {
 
 	route := gin.Default()
 
+	route.Use(controller.CORSMiddleware())
 	// users
 	route.GET("/users", controller.GetAllUser)
 	// user
@@ -26,7 +27,6 @@ func main() {
 	route.DELETE("/user/:id", controller.DeleteUserByID)
 	route.PUT("/user/:id", controller.PutUserByID)
 
-	route.Use(controller.CORSMiddleware())
 	route.Run(":" + os.Getenv("PORT"))
 
 }
