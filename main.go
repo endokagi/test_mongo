@@ -5,11 +5,14 @@ import (
 	"testmongo/controller"
 
 	"github.com/gin-gonic/gin"
+	"github.com/subosito/gotenv"
 )
 
-func main() {
+func init() {
+	gotenv.Load()
+}
 
-	os.Setenv("PORT", "4000")
+func main() {
 
 	route := gin.Default()
 
